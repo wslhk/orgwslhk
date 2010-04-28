@@ -7,6 +7,9 @@ import java.util.*;
 
 public class Str {//字符串转换 
 
+	/**
+	 * 字符串编码传唤gb2312
+	 */
 	static public String getBytesGb2312(String ostr){
 		String newstr=null;
 		try{
@@ -14,7 +17,11 @@ public class Str {//字符串转换
 		}catch(Exception e){System.out.print("Str.java:"+e);e.printStackTrace();newstr="error";}
 		return newstr;
 	}
-	
+	/**
+	 * 字符串编码转换 u8
+	 * @param ostr
+	 * @return
+	 */
 	static public String getBytesUtf8(String ostr){
 		String newstr=null;
 		try{
@@ -26,52 +33,13 @@ public class Str {//字符串转换
 		}catch(Exception e){System.out.print("Str.java:"+e);e.printStackTrace();newstr="error";}
 		return newstr;
 	}
-	/*
-	static public String GbtoUtf8Str(String ostr){
-		String newstr=null;
-		try{
-		newstr=new String(ostr.getBytes("gb2312"), "utf-8");
-		}catch(Exception e){System.out.print("Str.java:"+e);e.printStackTrace();newstr="error";}
-		return newstr;
-	}
-	static public String Utf8toGb(String ostr){
-		String newstr=null;
-		if(ostr!=null){
-		try{
-		newstr=new String(ostr.getBytes("utf-8"), "gb2312");
-		}catch(Exception e){System.out.print("Str.java:"+e);e.printStackTrace();newstr="error";}
-		}
-		return newstr;
-	}
-	*/
-	public static String Md5(String plainText) {
-		StringBuffer buf = new StringBuffer(""); 
-		if(plainText!=null){
-		  try {
-		   MessageDigest md = MessageDigest.getInstance("MD5");
 
-		   md.update(plainText.getBytes());
-		   byte b[] = md.digest();
 
-		   int i;
-		   
-		   for (int offset = 0; offset < b.length; offset++) {
-		    i = b[offset];
-		    if(i<0) i+= 256;
-		    if(i<16)
-		     buf.append("0");
-		    buf.append(Integer.toHexString(i));
-		   }
-		   //System.out.println("result: " + buf.toString());
-		   
-		  } catch (NoSuchAlgorithmException e) {
-		   // TODO Auto-generated catch block
-		   e.printStackTrace();
-		  }
-		}
-		  return buf.toString();
-	}
-	//时间补０
+	/**
+	 * 时间补０
+	 * @param value
+	 * @return
+	 */
 	public static String addzero(int value){
 		
 		String result=""+value;
@@ -80,6 +48,11 @@ public class Str {//字符串转换
 		}		
 		return result;
 	}
+	/**
+	 * 时间补０
+	 * @param value
+	 * @return
+	 */
 	public static String addzero(String value){
 		
 		if(value!=null){
@@ -92,6 +65,11 @@ public class Str {//字符串转换
 		return value;
 	}
 
+	/**
+	 * 时间转换字符串//x年x月x日
+	 * @param date1
+	 * @return
+	 */
 	public static String DateToCnFormat_YMD(Date date1){//时间转换字符串//x年x月x日
 		String result=null;
 		if(date1!=null){
@@ -102,6 +80,12 @@ public class Str {//字符串转换
 		
 		return result;
 	}
+	
+	/**
+	 * 时间转换字符串//x年x月x日
+	 * @param calendar1
+	 * @return
+	 */
 	public static String DateToCnFormat_YMD(Calendar calendar1){//时间转换字符串//x年x月x日
 		String result=null;
 		if(calendar1!=null){
@@ -112,6 +96,12 @@ public class Str {//字符串转换
 		
 		return result;
 	}
+	
+	/**
+	 * 时间转换字符串//x年x月x日
+	 * @param calendar1
+	 * @return
+	 */
 	public static String DateToEnFormat_YMD(Calendar calendar1){//时间转换字符串//x年x月x日
 		String result=null;
 		if(calendar1!=null){
@@ -122,6 +112,11 @@ public class Str {//字符串转换
 		
 		return result;
 	}
+	/**
+	 * xxxx年xx月
+	 * @param date1
+	 * @return
+	 */
 	public static String DateToCnFormat_YM(Calendar date1){//xxxx年xx月
 		String result=null;
 		if(date1!=null){
@@ -133,53 +128,9 @@ public class Str {//字符串转换
 		
 		return result;
 	}
-	public static String DateToEnFormat_YM(Date date1){//时间转换字符串//x-x
-		String result=null;
-		if(date1!=null){
-			//System.out.println(date1);
-			Calendar calendar1 = Calendar.getInstance();
-			calendar1.setTime(date1);
-			//System.out.println(calendar1.get(arg0));
-			result=""+calendar1.get(calendar1.YEAR)+"-";
-			result=result+(calendar1.get(calendar1.MONTH)+1)+"";
-		}
-		
-		return result;
-	}
-	public static String DateToEnFormat_YM(Calendar date1){//时间转换字符串//x-x
-		String result=null;
-		if(date1!=null){
-			//System.out.println(date1);
-			Calendar calendar1 = date1;
-			result=""+calendar1.get(calendar1.YEAR)+"-";
-			result=result+(calendar1.get(calendar1.MONTH)+1)+"";
-		}
-		
-		return result;
-	}
-	/*
-	public static boolean DateEqualsByMonth(Calendar date1,Calendar date2){//时间转换字符串//x-x
-		boolean result=false;
-		String str1;
-		String str2;
-		//.out.println("str2:"+date2.get(date2.YEAR));
-		if(date1!=null&&date2!=null){
-			//System.out.println("===");
-			Calendar calendar1 = date1;
-			Calendar calendar2 = date2;
-			
-			str1=""+calendar1.get(calendar1.YEAR)+"-";
-			str1=str1+(calendar1.get(calendar1.MONTH)+1)+"";
-			str2=""+calendar2.get(calendar2.YEAR)+"-";
-			str2=str2+(calendar2.get(calendar2.MONTH)+1)+"";
-			if(str1.equals(str2)){
-				
-				result=true;
-			}
-		}
-		return result;
-	}
-	*/
+	/**
+	 * 时间转换字符串//x年x月x日
+	 */
 	public static String DateToCnFormat_D(Date date1){//时间转换字符串//x年x月x日
 		String result=null;
 		if(date1!=null){
@@ -192,6 +143,11 @@ public class Str {//字符串转换
 		return result;
 	}
 	
+	/**
+	 * 时间转换字符串//xxxx-xx-xx xx:xx:xx
+	 * @param date1
+	 * @return
+	 */
 	public static String DateToEnFormat_YMDHMS(Date date1){//时间转换字符串//xxxx-xx-xx xx:xx:xx
 		String result=null;
 		if(date1!=null){
@@ -210,6 +166,11 @@ public class Str {//字符串转换
 		return result;
 	}
 	
+	/**
+	 * 时间转换字符串//0000000000000
+	 * @param date1
+	 * @return
+	 */
 	public static String DateToIntFormat_YMDHMS(Date date1){//时间转换字符串//0000000000000
 		String result=null;
 		if(date1!=null){
@@ -225,6 +186,12 @@ public class Str {//字符串转换
 		
 		return result;
 	}
+	
+	/**
+	 * 字符串转时间
+	 * @param datestr
+	 * @return
+	 */
 	public static Date StrToDate(String datestr){
 		java.util.Date result=null;
 		if(datestr!=null){
@@ -237,34 +204,65 @@ public class Str {//字符串转换
 		}
 		return result;
 	}
-	public static String ArrToStr(String[] arr){
-		String result=null;
-			for(int i=0;i<arr.length;i++){
-				if(result==null){
-					result=arr[i];
-				}else{
-					result=result+","+arr[i];
-				}
-			}
+
+/**
+ * 字符串转时间
+ * @param datestr
+ * @param format 比如 "yyyy-MM-dd HH:mm:ss"
+ * @return
+ */
+	public static Date StrToDate(String datestr,String format){
+		java.util.Date result=null;
+		if(datestr!=null){
+		try{	
+		SimpleDateFormat localTime   =    new   SimpleDateFormat(format);
+		result=localTime.parse(datestr);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		}
 		return result;
 	}
-	public static String ArrToStr(Integer[] arr){
-		String result=null;
-			for(int i=0;i<arr.length;i++){
-				if(result==null){
-					result=arr[i]+"";
-				}else{
-					result=result+","+arr[i]+"";
-				}
-			}
-		return result;
-	}
+//	public static String ArrToStr(String[] arr){
+//		String result=null;
+//			for(int i=0;i<arr.length;i++){
+//				if(result==null){
+//					result=arr[i];
+//				}else{
+//					result=result+","+arr[i];
+//				}
+//			}
+//		return result;
+//	}
+//	/**
+//	 * 数组转字符串,中间用','填充
+//	 * @param arr
+//	 * @return
+//	 */
+//	public static String ArrToStr(Integer[] arr){
+//		String result=null;
+//			for(int i=0;i<arr.length;i++){
+//				if(result==null){
+//					result=arr[i]+"";
+//				}else{
+//					result=result+","+arr[i]+"";
+//				}
+//			}
+//		return result;
+//	}
 	
-	//16进制随机数
+	/**
+	 * 16进制随机数
+	 * @return
+	 */
 	public static String getRndHex(){
 		return Integer.toHexString(new Random().nextInt())+Integer.toHexString(new Random().nextInt()); 
 	}
-	//enurlcode
+	/**
+	 * enurlcode
+	 * @param str
+	 * @return
+	 */
 	public static String uriencode(String str){
 		String result=null;
 		if(str!=null){
@@ -276,7 +274,11 @@ public class Str {//字符串转换
 		}
 		return result;
 	}
-	//deurlcode
+	/**
+	 * uridecode
+	 * @param str
+	 * @return
+	 */
 	public static String uridecode(String str){
 		String result=null;
 		if(str!=null){
@@ -289,7 +291,11 @@ public class Str {//字符串转换
 		return result;
 	}
 
-	//html过滤
+	/**
+	 * html 基本过滤
+	 * @param str
+	 * @return
+	 */
 	 public static String HTML2TEXT(String str){
 		  str=str.replace("&","&amp;");
 		  str=str.replace("<","&lt;");
@@ -303,7 +309,12 @@ public class Str {//字符串转换
 		  //str=str.replace("or","");
 		  return str;
 	  }
-	 //添加省略号
+	 /**
+	  * 截取字符串并且莫非添加'...'
+	  * @param str
+	  * @param length
+	  * @return
+	  */
 	 public static String Sub(String str,int length){
 		 try{
 		 return Sub(str,length,"...");
@@ -311,7 +322,13 @@ public class Str {//字符串转换
 			 return str;
 		 }
 	 }
-	 //添加任意符号
+	 /**
+	  * 截取字符串
+	  * @param str 原字符
+	  * @param length 长度
+	  * @param overstr 末尾添加内容,比如'...'
+	  * @return
+	  */
 	 public static String Sub(String str,int length,String overstr){
 		 if(str!=null){
 		 if(str.length()<length){
@@ -324,7 +341,7 @@ public class Str {//字符串转换
 		 }
 		 
 	 }
-	/*
+	/**
 	 * 数组去重复
 	 */
 	 public static String[] Distinct(String str[]){
