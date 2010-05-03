@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import org.wslhk.Log.Log;
 import org.wslhk.io.FileOperate;
+import org.wslhk.util.Log.Log;
 /**
  * 获取景泰静态网页的工具
  * @author wsl

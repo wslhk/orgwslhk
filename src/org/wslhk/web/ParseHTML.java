@@ -11,8 +11,8 @@ import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.ImageTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-import org.wslhk.Log.Log;
 import org.wslhk.io.FileOperate;
+import org.wslhk.util.Log.Log;
 
 public class ParseHTML {
 	public static void main(String[] args){
